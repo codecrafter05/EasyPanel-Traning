@@ -12169,7 +12169,6 @@ pre .code {
     padding-left: calc(100% / 5) !important;
   }
 }
-
 .about {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -12183,13 +12182,14 @@ pre .code {
 }
 
 .about-img-holder {
-  min-width: 400px;
-  max-width: 400px;
+  min-width: 400px; /* Adjust this value as needed */
+  max-width: 400px; /* Adjust this value as needed */
   margin-right: 20px;
 }
 
-.about-img-holder .about-img {
-  width: 100%;
+.about-img-holder .about-img img {
+  width: 100%; /* Ensures the image scales within the holder */
+  max-width: 100%; /* Prevents the image from exceeding the holder size */
   margin-bottom: 15px;
 }
 
@@ -12217,6 +12217,7 @@ pre .code {
     margin-bottom: 20px;
   }
 }
+
 
 /* sections */
 .section {
