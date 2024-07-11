@@ -101,7 +101,7 @@
                         <div class="service-card">
                             <div class="body">
                                 @if($s->service_url)
-                                    <a class="icon" href="#"><img src="{{ $s->service_url }}" alt="alternative"></a>
+                                    <img class="icon"src="{{ $s->service_url }}" alt="alternative">
                                 @endif  
                                 <h6 class="title">{{ $s->title }}</h6>
                                 <p class="subtitle">{{ $s->subtitle }}</p>
@@ -118,41 +118,23 @@
         <div class="container text-center">
             <p class="section-subtitle">What I Did ?</p>
             <h6 class="section-title mb-6">Portfolio</h6>
-            <!-- row -->
+              <!-- row -->
             <div class="row">
+            @foreach($portfolio as $p)
                 <div class="col-md-4">
                     <a href="#" class="portfolio-card">
-                        <img src="imgs/folio-1.jpg" class="portfolio-card-img" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">    
+                    @if($s->service_url)
+                        <img  class="portfolio-card-img" src="{{ $p->portfolio_url }}" alt="alternative">
+                    @endif  
                         <span class="portfolio-card-overlay">
                             <span class="portfolio-card-caption">
-                                <h4>Web Designing</h5>
-                                <p class="font-weight-normal">Category: Web Templates</p>
+                                <h4>{{ $p->title }}</h5>
+                                <p class="font-weight-normal">{{ $p->subtitle }}</p>
                             </span>                         
                         </span>                     
                     </a>
                 </div>
-                <div class="col-md-4">
-                    <a href="#" class="portfolio-card">
-                        <img class="portfolio-card-img" src="imgs/folio-2.jpg" class="img-responsive rounded" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
-                        <span class="portfolio-card-overlay">
-                            <span class="portfolio-card-caption">
-                                <h4>Web Designing</h5>
-                                <p class="font-weight-normal">Category: Web Templates</p>
-                            </span>                         
-                        </span>                         
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="#" class="portfolio-card">
-                        <img class="portfolio-card-img" src="imgs/folio-3.jpg" class="img-responsive rounded" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">    
-                        <span class="portfolio-card-overlay">
-                            <span class="portfolio-card-caption">
-                                <h4>Web Designing</h5>
-                                <p class="font-weight-normal">Category: Web Templates</p>
-                            </span>                         
-                        </span>                     
-                    </a>
-                </div>
+                @endforeach
             </div><!-- end of row -->
         </div><!-- end of container -->
     </section> <!-- end of portfolio section -->
