@@ -123,7 +123,7 @@
             @foreach($portfolio as $p)
                 <div class="col-md-4">
                     <a href="#" class="portfolio-card">
-                    @if($s->service_url)
+                    @if($p->portfolio_url)
                         <img  class="portfolio-card-img" src="{{ $p->portfolio_url }}" alt="alternative">
                     @endif  
                         <span class="portfolio-card-overlay">
@@ -236,7 +236,6 @@
         <div class="container text-center">
             <p class="section-subtitle">What Think Client About Me ?</p>
             <h6 class="section-title mb-6">Testmonial</h6>
-
             <!-- row -->
             <div class="row">
             @foreach($testmonial as $t)
@@ -263,48 +262,27 @@
         <div class="container text-center">
             <p class="section-subtitle">Recent Posts?</p>
             <h6 class="section-title mb-6">Blog</h6>
+            @foreach($blog as $b)
             <!-- blog-wrapper -->
             <div class="blog-card">
                 <div class="blog-card-header">
-                    <img src="imgs/img-1.jpg" class="blog-card-img" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+                    @if($b->blog_url)
+                        <img  class="blog-card-img" src="{{ $b->blog_url }}" alt="alternative">
+                    @endif  
                 </div>
                 <div class="blog-card-body">
-                    <h5 class="blog-card-title">Consectetur adipisicing elit</h6>
+                    <h5 class="blog-card-title">{{ $b->title }}</h6>
 
                     <p class="blog-card-caption">
-                        <a href="#">By: Admin</a>
-                        <a href="#"><i class="ti-heart text-danger"></i> 234</a>
-                        <a href="#"><i class="ti-comment"></i> 123</a>
+                        <a href="#">By: {{ $b->creator }}</a>
+                        <a href="#"><i class="ti-heart text-danger"></i> {{ $b->like }}</a>
+                        <a href="#"><i class="ti-comment"></i> {{ $b->comment }}</a>
                     </p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet nesciunt qui sit velit delectus voluptates, repellat ipsum culpa id deleniti. Rerum debitis facilis accusantium neque numquam mollitia modi quasi distinctio.</p>
-
-                    <p><b>Necessitatibus nihil impedit! Ex nisi eveniet, dolor aliquid consequuntur repudiandae.</b></p>
-                    <p>Magnam in repellat enim harum omnis aperiam! Explicabo illo, commodi, dolor blanditiis cupiditate harum nisi vero accusamus laudantium voluptatibus dolores quae obcaecati.</p>
-
+                    <p>{{ $b->subtitle }}</p>
                     <a href="#" class="blog-card-link">Read more <i class="ti-angle-double-right"></i></a>
                 </div>
             </div><!-- end of blog wrapper -->
-
-            <!-- blog-wrapper -->
-            <div class="blog-card">
-                <div class="blog-card-header">
-                    <img src="imgs/img-2.jpg" class="blog-card-img" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
-                </div>
-                <div class="blog-card-body">
-                    <h5 class="blog-card-title">Explicabo illo</h6>
-
-                    <p class="blog-card-caption">
-                        <a href="#">By: Admin</a>
-                        <a href="#"><i class="ti-heart text-danger"></i> 456</a>
-                        <a href="#"><i class="ti-comment"></i> 264</a>
-                    </p>
-                    
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit excepturi laborum enim, vitae ipsam atque eum, ad iusto consequuntur voluptas, esse doloribus. Perferendis porro quisquam vitae exercitationem aliquid, minus eos laborum repudiandae, cumque debitis iusto omnis praesentium? Laborum placeat sit adipisci illum tempore maxime, esse qui quae? Molestias excepturi corporis similique doloribus. Esse vitae earum architecto nulla non dolores illum at perspiciatis quod, et deleniti cupiditate reiciendis harum facere, delectus eum commodi soluta distinctio sit repudiandae possimus sunt. Ipsum, rem.</p>
-
-                    <a href="#" class="blog-card-link">Read more <i class="ti-angle-double-right"></i></a>
-                </div>
-            </div><!-- end of blog wrapper -->
-
+            @endforeach
         </div><!-- end of container -->
     </section><!-- end of blog section -->
 

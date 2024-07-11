@@ -9,7 +9,7 @@ use App\Models\about;
 use App\Models\service;
 use App\Models\portfolio;
 use App\Models\testmonial;
-
+use App\Models\blog;
 
 
 class PageController extends Controller
@@ -22,6 +22,7 @@ class PageController extends Controller
         $service = service::all();
         $portfolio = portfolio::latest()->take(3)->get();
         $testmonial = testmonial::all();
+        $blog = blog::latest()->take(2)->get();
 
         return view('index', [
             'logoUrl' => $logo ? $logo->logo_url : null,
@@ -31,7 +32,7 @@ class PageController extends Controller
             'service' => $service,
             'portfolio' => $portfolio,
             'testmonial' => $testmonial,
-            
+            'blog' => $blog,
         ]);
     }
 
