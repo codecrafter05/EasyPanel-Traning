@@ -11137,12 +11137,11 @@ p {
   border: 1px solid #dee2e6;
   overflow: hidden;
   border-radius: 3px;
-  margin-bottom: 20px;;
+  margin-bottom: 20px;
 }
 
 .service-card .body {
   padding: 10px;
-  margin-top: 40px;
 }
 
 .service-card .body img.icon {

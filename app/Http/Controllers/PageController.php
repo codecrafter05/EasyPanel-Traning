@@ -7,7 +7,7 @@ use App\Models\Logo;
 use App\Models\home;
 use App\Models\about;
 use App\Models\service;
-
+use App\Models\portfolio;
 
 
 
@@ -20,6 +20,7 @@ class PageController extends Controller
         $home = home::latest()->first();
         $about = about::latest()->first();
         $service = service::all();
+        $portfolio = portfolio::latest()->take(3)->get();
 
         return view('index', [
             'logoUrl' => $logo ? $logo->logo_url : null,
@@ -27,6 +28,7 @@ class PageController extends Controller
             'about' => $about,
             'aboutUrl' => $about ? $about->about_url : null,
             'service' => $service,
+            'portfolio' => $portfolio,
             
         ]);
     }
