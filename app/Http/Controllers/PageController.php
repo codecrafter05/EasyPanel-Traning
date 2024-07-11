@@ -8,7 +8,7 @@ use App\Models\home;
 use App\Models\about;
 use App\Models\service;
 use App\Models\portfolio;
-
+use App\Models\testmonial;
 
 
 
@@ -21,6 +21,7 @@ class PageController extends Controller
         $about = about::latest()->first();
         $service = service::all();
         $portfolio = portfolio::latest()->take(3)->get();
+        $testmonial = testmonial::all();
 
         return view('index', [
             'logoUrl' => $logo ? $logo->logo_url : null,
@@ -29,6 +30,7 @@ class PageController extends Controller
             'aboutUrl' => $about ? $about->about_url : null,
             'service' => $service,
             'portfolio' => $portfolio,
+            'testmonial' => $testmonial,
             
         ]);
     }

@@ -146,5 +146,8 @@
     "Service": "Service",
     "Image": "Image",
     "Portfolio": "Portfolio",
-    "Portfolios": "Portfolios"
+    "Portfolios": "Portfolios",
+    "Comment": "Comment",
+    "Testmonial": "Testmonial",
+    "Testmonials": "Testmonials"
 }
