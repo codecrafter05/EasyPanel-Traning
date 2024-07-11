@@ -11137,14 +11137,16 @@ p {
   border: 1px solid #dee2e6;
   overflow: hidden;
   border-radius: 3px;
+  margin-bottom: 20px;;
 }
 
 .service-card .body {
   padding: 10px;
+  margin-top: 40px;
 }
 
 .service-card .body img.icon {
-  margin-top: 40px;
+  margin-top: 60px;
   width: 55px;
   margin-bottom: 25px;
   -webkit-transition: all, 0.3s;
@@ -12169,7 +12171,21 @@ pre .code {
     padding-left: calc(100% / 5) !important;
   }
 }
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+
 .about {
+  animation: slideInLeft 2s ease-in-out;
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;

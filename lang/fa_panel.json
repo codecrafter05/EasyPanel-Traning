@@ -141,5 +141,7 @@
     "Link": "Link",
     "Location": "Location",
     "Locations": "Locations",
-    "Text1": "Text1"
+    "Text1": "Text1",
+    "Icon": "Icon",
+    "Service": "Service"
 }
