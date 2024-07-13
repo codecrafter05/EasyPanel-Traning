@@ -11,6 +11,10 @@
     <!-- Bootstrap + Meyawo main styles -->
 	<link rel="stylesheet" href="css/meyawo.css">
     <!-- Livewire Styles -->
+    <link rel="stylesheet" href="path/to/aos.css">
+    <script src="path/to/aos.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick-theme.css') }}"/>
     @livewireStyles
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
@@ -68,26 +72,25 @@
 
     <!-- about section -->
     <section class="section pt-0" id="about">
-        <!-- container -->
-        <div class="container text-center">
-            <!-- about wrapper -->
-            <div class="about">
-                <div class="about-img-holder">
-                    @if($aboutUrl)
-                        <img src="{{ $aboutUrl }}" alt="alternative"></a>         
-                    @endif  
-                </div>
-                <div class="about-caption">
-                    <p class="section-subtitle"> {{ $about->text1 }} </p>
-                    <h2 class="section-title mb-3"> {{ $about->title }}</h2>
-                    <p>
-                    {{ $about->subtitle }}
-                    </p>
-                    <button class="btn-rounded btn btn-outline-primary mt-4">Download CV</button>
-                </div>              
-            </div><!-- end of about wrapper -->
-        </div><!-- end of container -->
-    </section> <!-- end of about section -->
+    <!-- container -->
+    <div class="container text-center" data-aos="fade-up" data-aos-duration="1000">
+        <!-- about wrapper -->
+        <div class="about">
+            <div class="about-img-holder">
+                @if($aboutUrl)
+                    <img src="{{ $aboutUrl }}" alt="alternative">
+                @endif
+            </div>
+            <div class="about-caption">
+                <p class="section-subtitle">{{ $about->text1 }}</p>
+                <h2 class="section-title mb-3">{{ $about->title }}</h2>
+                <p>{{ $about->subtitle }}</p>
+                <button class="btn-rounded btn btn-outline-primary mt-4">Download CV</button>
+            </div>
+        </div><!-- end of about wrapper -->
+    </div><!-- end of container -->
+</section><!-- end of about section -->
+
 
     <!-- service section -->
     <section class="section" id="service">
@@ -231,30 +234,33 @@
         </div> <!-- end of container -->
     </section> <!-- end of section -->
 
-    <!-- testimonial section -->
+   
+   <!-- testimonial section -->
     <section class="section" id="testmonial">
         <div class="container text-center">
-            <p class="section-subtitle">What Think Client About Me ?</p>
-            <h6 class="section-title mb-6">Testmonial</h6>
-            <!-- row -->
-            <div class="row">
-            @foreach($testmonial as $t)
-                <div class="col-md-6">
-                    <div class="testimonial-card">
-                        <div class="testimonial-card-img-holder">
-                        @if($s->service_url)
-                            <img  class="testimonial-card-img" src="{{ $t->testmonial_url }}" alt="alternative">
-                        @endif  
-                        </div>
-                        <div class="testimonial-card-body">
-                            <p class="testimonial-card-subtitle">{{ $t->comment }}</p>
-                            <h6 class="testimonial-card-title">{{ $t->name }}</h6>
+            <p class="section-subtitle">What Think Client About Me?</p>
+            <h6 class="section-title mb-6">Testimonial</h6>
+            <!-- testimonial carousel -->
+            <div class="testimonial-carousel">
+                @foreach($testmonial as $t)
+                    <div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-card-img-holder">
+                            @if($t->testmonial_url)
+                                <img class="testimonial-card-img" src="{{ $t->testmonial_url }}" alt="alternative">
+                            @endif
+                            </div>
+                            <div class="testimonial-card-body">
+                                <p class="testimonial-card-subtitle">{{ $t->comment }}</p>
+                                <h6 class="testimonial-card-title">{{ $t->name }}</h6>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
-        </div> <!-- end of container -->
-    </section> <!-- end of testimonial section -->
+            </div><!-- end of testimonial carousel -->
+        </div><!-- end of container -->
+    </section><!-- end of testimonial section -->
+
     
     <!-- blog section -->
     <section class="section" id="blog">
@@ -342,6 +348,32 @@
 
     <!-- Meyawo js -->
     <script src="js/meyawo.js"></script>
+   
+    <!-- Slick Carousel JavaScript -->
+    <script src="{{ asset('slick/slick.min.js') }}"></script>
+    <!-- Meyawo JavaScript -->
+    <script src="{{ asset('js/meyawo.js') }}"></script>
+
+    <script>
+    AOS.init();
+    </script>
+
+
+    <!-- Initialize Slick Carousel -->
+    <script>
+        $(document).ready(function(){
+            $('.testimonial-carousel').slick({
+                dots: true,
+                infinite: true,
+                speed: 1000,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 6000,
+            });
+        });
+    </script>
+    
 
 </body>
 </html>

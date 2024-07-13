@@ -51,6 +51,7 @@
 }
 
 html {
+  scroll-behavior: smooth;
   font-family: sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
@@ -11358,6 +11359,11 @@ p {
 }
 
 /* testmonial card */
+.testimonial-carousel .slick-slide {
+  display: flex;
+  justify-content: center;
+}
+
 .testimonial-card {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -11367,8 +11373,11 @@ p {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: auto; 
   margin-bottom: 30px;
-}
+  justify-content: center; }
+  
+
 
 .testimonial-card-img-holder {
   min-width: 45px;
