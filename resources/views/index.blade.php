@@ -11,6 +11,14 @@
     <!-- Bootstrap + Meyawo main styles -->
 	<link rel="stylesheet" href="css/meyawo.css">
     <!-- Livewire Styles -->
+    <link rel="stylesheet" href="path/to/aos.css">
+    <script src="path/to/aos.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick-theme.css') }}"/>
     @livewireStyles
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
@@ -67,80 +75,92 @@
     </header><!-- end of page header -->
 
     <!-- about section -->
-    <section class="section pt-0" id="about">
-        <!-- container -->
-        <div class="container text-center">
-            <!-- about wrapper -->
-            <div class="about">
-                <div class="about-img-holder">
-                    @if($aboutUrl)
-                        <img src="{{ $aboutUrl }}" alt="alternative"></a>         
-                    @endif  
-                </div>
-                <div class="about-caption">
-                    <p class="section-subtitle"> {{ $about->text1 }} </p>
-                    <h2 class="section-title mb-3"> {{ $about->title }}</h2>
-                    <p>
-                    {{ $about->subtitle }}
-                    </p>
-                    <button class="btn-rounded btn btn-outline-primary mt-4">Download CV</button>
-                </div>              
-            </div><!-- end of about wrapper -->
-        </div><!-- end of container -->
-    </section> <!-- end of about section -->
+    <section class="section pt-0" id="about" data-aos="flip-up" data-aos-duration="1000">
+    <!-- container -->
+    <div class="container text-center" >
+        <!-- about wrapper -->
+        <div class="about">
+            <div class="about-img-holder">
+                @if($aboutUrl)
+                    <img src="{{ $aboutUrl }}" alt="alternative">
+                @endif
+            </div>
+            <div class="about-caption">
+                <p class="section-subtitle">{{ $about->text1 }}</p>
+                <h2 class="section-title mb-3">{{ $about->title }}</h2>
+                <p>{{ $about->subtitle }}</p>
+                <button class="btn-rounded btn btn-outline-primary mt-4">Download CV</button>
+            </div>
+        </div><!-- end of about wrapper -->
+    </div><!-- end of container -->
+</section><!-- end of about section -->
+
 
     <!-- service section -->
-    <section class="section" id="service">
-        <div class="container text-center">
-            <p class="section-subtitle">What I Do ?</p>
+    <section class="section" id="service" data-aos="fade-up" data-aos-duration="1000">
+    <div class="container text-center">
+    <p class="section-subtitle">What I Do ?</p>
             <h6 class="section-title mb-6">Service</h6>
-            <!-- row -->
-            <div class="row">
-                @foreach($service as $s)
-                    <div class="col-md-6 col-lg-3">
-                        <div class="service-card">
-                            <div class="body">
+        <div class="row">
+            @foreach($service as $s)
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="service-card">
+                        <div class="service-card-inner">
+                            <div class="service-icon">
                                 @if($s->service_url)
-                                    <img class="icon"src="{{ $s->service_url }}" alt="alternative">
+                                    <img class="icon" src="{{ $s->service_url }}" alt="alternative">
                                 @endif  
+                            </div>
+                            <div class="service-content">
                                 <h6 class="title">{{ $s->title }}</h6>
                                 <p class="subtitle">{{ $s->subtitle }}</p>
+                            </div>
+                            <div class="overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div><!-- end of row -->
+    </div>
+    </section><!-- end of service section -->
+
+
+
+    <!-- portfolio section -->
+    <section class="section" id="portfolio" data-aos="fade-up" data-aos-duration="1000">
+        <div class="container text-center">
+            <p class="section-subtitle">What I Did ?</p>
+            <h6 class="section-title mb-6">Portfolio</h6>
+            <div class="row justify-content-center">
+                @foreach($portfolio as $p)
+                    <div class="col-md-4 mb-4">
+                        
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    @if($p->portfolio_url)
+                                        <img class="portfolio-card-img" src="{{ $p->portfolio_url }}" alt="alternative">
+                                    @endif
+                                    <div class="portfolio-title">
+                                        <h6 class="title">{{ $p->title }}</h6>
+                                    </div>
+                                </div>
+                                <div class="flip-card-back">
+                                    <div class="portfolio-subtitle">
+                                    <p class="subtitle">{{ $p->subtitle }}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div><!-- end of row -->
-        </div>
-    </section><!-- end of service section -->
-
-    <!-- portfolio section -->
-    <section class="section" id="portfolio">
-        <div class="container text-center">
-            <p class="section-subtitle">What I Did ?</p>
-            <h6 class="section-title mb-6">Portfolio</h6>
-              <!-- row -->
-            <div class="row">
-            @foreach($portfolio as $p)
-                <div class="col-md-4">
-                    <a href="#" class="portfolio-card">
-                    @if($p->portfolio_url)
-                        <img  class="portfolio-card-img" src="{{ $p->portfolio_url }}" alt="alternative">
-                    @endif  
-                        <span class="portfolio-card-overlay">
-                            <span class="portfolio-card-caption">
-                                <h4>{{ $p->title }}</h5>
-                                <p class="font-weight-normal">{{ $p->subtitle }}</p>
-                            </span>                         
-                        </span>                     
-                    </a>
-                </div>
-                @endforeach
-            </div><!-- end of row -->
         </div><!-- end of container -->
-    </section> <!-- end of portfolio section -->
+    </section><!-- end of portfolio section -->
+
 
     <!-- pricing section -->
-    <section class="section" id="pricing">
+    <section class="section" id="pricing" data-aos="fade-up" data-aos-duration="1000">
         <div class="container text-center">
             <p class="section-subtitle">How Much I Charge ?</p>
             <h6 class="section-title mb-6">My Pricing</h6>
@@ -215,7 +235,7 @@
     </section><!-- end of pricing section -->
 
     <!-- section -->
-    <section class="section-sm bg-primary">
+    <section class="section-sm bg-primary" >
         <!-- container -->
         <div class="container text-center text-sm-left">
             <!-- row -->
@@ -231,63 +251,69 @@
         </div> <!-- end of container -->
     </section> <!-- end of section -->
 
-    <!-- testimonial section -->
-    <section class="section" id="testmonial">
+   
+   <!-- testimonial section -->
+    <section class="section" id="testmonial" data-aos="fade-up" data-aos-duration="1000">
         <div class="container text-center">
-            <p class="section-subtitle">What Think Client About Me ?</p>
-            <h6 class="section-title mb-6">Testmonial</h6>
-            <!-- row -->
-            <div class="row">
-            @foreach($testmonial as $t)
-                <div class="col-md-6">
-                    <div class="testimonial-card">
-                        <div class="testimonial-card-img-holder">
-                        @if($s->service_url)
-                            <img  class="testimonial-card-img" src="{{ $t->testmonial_url }}" alt="alternative">
-                        @endif  
-                        </div>
-                        <div class="testimonial-card-body">
-                            <p class="testimonial-card-subtitle">{{ $t->comment }}</p>
-                            <h6 class="testimonial-card-title">{{ $t->name }}</h6>
+            <p class="section-subtitle">What Think Client About Me?</p>
+            <h6 class="section-title mb-6">Testimonial</h6>
+            <!-- testimonial carousel -->
+            <div class="testimonial-carousel">
+                @foreach($testmonial as $t)
+                    <div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-card-img-holder">
+                            @if($t->testmonial_url)
+                                <img class="testimonial-card-img" src="{{ $t->testmonial_url }}" alt="alternative">
+                            @endif
+                            </div>
+                            <div class="testimonial-card-body">
+                                <p class="testimonial-card-subtitle">{{ $t->comment }}</p>
+                                <h6 class="testimonial-card-title">{{ $t->name }}</h6>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
-        </div> <!-- end of container -->
-    </section> <!-- end of testimonial section -->
+            </div><!-- end of testimonial carousel -->
+        </div><!-- end of container -->
+    </section><!-- end of testimonial section -->
+
     
     <!-- blog section -->
-    <section class="section" id="blog">
-        <!-- container -->
-        <div class="container text-center">
-            <p class="section-subtitle">Recent Posts?</p>
-            <h6 class="section-title mb-6">Blog</h6>
+    <section class="section" id="blog" data-aos="fade-up" data-aos-duration="1000">
+    <div class="container" >
+        <p class="section-subtitle text-center">Recent Posts</p>
+        <h6 class="section-title text-center mb-6">Blog</h6>
+        <div class="row justify-content-center" id="blog-container">
             @foreach($blog as $b)
-            <!-- blog-wrapper -->
-            <div class="blog-card">
-                <div class="blog-card-header">
-                    @if($b->blog_url)
-                        <img  class="blog-card-img" src="{{ $b->blog_url }}" alt="alternative">
-                    @endif  
+            <div class="col-lg-4 col-md-6 mb-4" >
+                <div class="blog-card">
+                    <div class="blog-card-header">
+                        @if($b->blog_url)
+                            <img class="blog-card-img" src="{{ $b->blog_url }}" alt="Blog Image">
+                        @endif
+                    </div>
+                    <div class="blog-card-body">
+                        <h5 class="blog-card-title">{{ $b->title }}</h5>
+                        <p class="blog-card-caption">
+                            <span>By: {{ $b->creator }}</span>
+                            <span><i class="ti-heart text-danger"></i> {{ $b->like }}</span>
+                            <span><i class="ti-comment"></i> {{ $b->comment }}</span>
+                        </p>
+                        <p class="blog-card-text">{{ $b->subtitle }}</p>
+                        <a href="#" class="btn btn-primary btn-sm blog-card-link">Read more <i class="ti-angle-double-right"></i></a>
+                    </div>
                 </div>
-                <div class="blog-card-body">
-                    <h5 class="blog-card-title">{{ $b->title }}</h6>
-
-                    <p class="blog-card-caption">
-                        <a href="#">By: {{ $b->creator }}</a>
-                        <a href="#"><i class="ti-heart text-danger"></i> {{ $b->like }}</a>
-                        <a href="#"><i class="ti-comment"></i> {{ $b->comment }}</a>
-                    </p>
-                    <p>{{ $b->subtitle }}</p>
-                    <a href="#" class="blog-card-link">Read more <i class="ti-angle-double-right"></i></a>
-                </div>
-            </div><!-- end of blog wrapper -->
+            </div>
             @endforeach
-        </div><!-- end of container -->
-    </section><!-- end of blog section -->
+        </div><!-- end of row -->
+    </div><!-- end of container -->
+</section><!-- end of blog section -->
+
+
 
     <!-- contact section -->
-    <section class="section" id="contact">
+    <section class="section" id="contact" >
     <div class="container text-center">
         <p class="section-subtitle">How can you communicate?</p>
         <h6 class="section-title mb-5">Contact Me</h6>
@@ -342,6 +368,55 @@
 
     <!-- Meyawo js -->
     <script src="js/meyawo.js"></script>
+   
+    <!-- Slick Carousel JavaScript -->
+    <script src="{{ asset('slick/slick.min.js') }}"></script>
+    <!-- Meyawo JavaScript -->
+    <script src="{{ asset('js/meyawo.js') }}"></script>
+
+    <script>
+    AOS.init();
+    </script>
+
+
+    <!-- Initialize Slick Carousel -->
+    <script>
+        $(document).ready(function(){
+            $('.testimonial-carousel').slick({
+                dots: true,
+                infinite: true,
+                speed: 1000,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 6000,
+            });
+        });
+    </script>
+    
+    <script>
+        $(document).ready(function() {
+    $(window).scroll(function() {
+        var windowHeight = $(window).height();
+        var scrollPos = $(window).scrollTop();
+
+        $('.about').each(function() {
+            var offset = $(this).offset().top;
+
+            // Check if the element is in the viewport
+            if (scrollPos > offset - windowHeight + 200) { // Adjust 200 based on when you want the animation to trigger
+                $(this).addClass('fadeInAnimation');
+            } else {
+                $(this).removeClass('fadeInAnimation'); // Remove class if not in viewport
+            }
+        });
+    });
+
+    // Trigger scroll event on page load to check initial state
+    $(window).scroll();
+});
+
+    </script>
 
 </body>
 </html>
